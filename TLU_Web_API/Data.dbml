@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dbtlu" Class="DataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-M6PM7KP\SQLEXPRESS;Initial Catalog=dbtlu;Integrated Security=True" SettingsObjectName="TLU_Web_API.Properties.Settings" SettingsPropertyName="dbtluConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.NhanVien" Member="NhanViens">
+    <Type Name="NhanVien">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MaNV" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TenNV" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="GioiTinh" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Tuoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SDT" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="IDKhoa" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsGV" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="IsLock" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SinhVien" Member="SinhViens">
+    <Type Name="SinhVien">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenSV" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MSV" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GioiTinh" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IDKhoa" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NgaySinh" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Anh" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DiemDanh" Member="DiemDanhs">
+    <Type Name="DiemDanh">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IDSinhVien" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDBuoiHoc" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DenLop" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TGDiemDanh" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InforSinhVien" Member="InforSinhViens">
+    <Type Name="InforSinhVien">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MSV" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TenSV" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="NgaySinh" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="TenKhoa" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="GioiTinh" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.GetLopMonHocTheoDiaDiem" Method="GetLopMonHocTheoDiaDiem">
+    <Parameter Name="IDDiaDiem" Parameter="iDDiaDiem" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetLopMonHocTheoDiaDiemResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TenBuoiHoc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IDLopMonHoc" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MaLopMonHoc" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TenLopMonHoc" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="TenNV" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Kiemtrathuoclop" Method="Kiemtrathuoclop" IsComposable="true">
+    <Parameter Name="IDSinhVien" Parameter="iDSinhVien" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IDBuoiHoc" Parameter="iDBuoiHoc" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Boolean" />
+  </Function>
+</Database>
