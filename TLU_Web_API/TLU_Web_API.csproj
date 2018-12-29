@@ -90,7 +90,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="controller\CheckInDiaDiemController.cs" />
     <Compile Include="controller\DiemDanhController.cs" />
-    <Compile Include="controller\NhanVienController.cs" />
     <Compile Include="controller\SinhVienController.cs" />
     <Compile Include="Data.designer.cs">
       <AutoGen>True</AutoGen>

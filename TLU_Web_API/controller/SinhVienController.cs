@@ -11,13 +11,6 @@ namespace TLU_Web_API.controller
     {
         DataDataContext db = new DataDataContext();
         [HttpGet]
-        public List<SinhVien> laydanhsachsinhvien()
-        {
-            
-            List<SinhVien> arr = (from a in db.SinhViens select a).ToList(); ;
-            return arr;
-        }
-        [HttpGet]
         public InforSinhVien getThongTinSinhVien(string id)
         {
             var sv = (from a in db.InforSinhViens where a.MSV.Equals(id) select a).FirstOrDefault();     
