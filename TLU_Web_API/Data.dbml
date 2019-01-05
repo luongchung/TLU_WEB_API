@@ -47,6 +47,25 @@
       <Column Name="GioiTinh" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.LopMonHoc" Member="LopMonHocs">
+    <Type Name="LopMonHoc">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MaLopMonHoc" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TenLopMonHoc" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="SoTinChi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDGiangVien" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="TongSoTiet" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsKT" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SinhVien_LopMonHoc" Member="SinhVien_LopMonHocs">
+    <Type Name="SinhVien_LopMonHoc">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IDSinhVien" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDLopMonHoc" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.GetLopMonHocTheoDiaDiem" Method="GetLopMonHocTheoDiaDiem">
     <Parameter Name="IDDiaDiem" Parameter="iDDiaDiem" Type="System.Int32" DbType="Int" />
     <ElementType Name="GetLopMonHocTheoDiaDiemResult">
@@ -62,5 +81,22 @@
     <Parameter Name="IDSinhVien" Parameter="iDSinhVien" Type="System.Int32" DbType="Int" />
     <Parameter Name="IDBuoiHoc" Parameter="iDBuoiHoc" Type="System.Int32" DbType="Int" />
     <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.getTTDiemDanh" Method="getTTDiemDanh">
+    <Parameter Name="IDSinhVien" Parameter="iDSinhVien" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="IDLopMonHoc" Parameter="iDLopMonHoc" Type="System.String" DbType="NVarChar(100)" />
+    <ElementType Name="getTTDiemDanhResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TenBuoiHoc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NgayHoc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="TenDiaDiem" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CoMat" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TGDiemDanh" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.getToken" Method="getToken" IsComposable="true">
+    <Parameter Name="IDBuoiHoc" Parameter="iDBuoiHoc" Type="System.Int32" DbType="Int" />
+    <Return Type="System.String" />
   </Function>
 </Database>
